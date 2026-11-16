@@ -58,12 +58,12 @@ val verifyReleaseSigning = tasks.register("verifyReleaseSigning") {
 
 android {
     namespace = "com.csqtt.client"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "csqtt.quic.amurcanov"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 230
         versionName = "2.5.0"
 
