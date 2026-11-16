@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SPDX-FileCopyrightText: 2026 amurcanov -->
-<!-- SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0 -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -14,7 +11,6 @@
     <uses-feature
         android:name="android.hardware.wifi"
         android:required="false" />
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -117,4 +113,28 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false
+            android:exported="false" />
+
+        <receiver
+            android:name=".CaptchaCancelReceiver"
+            android:exported="false" />
+
+        <receiver
+            android:name=".VpnWidgetProvider"
+            android:label="CSQTT ВПН Виджет"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/vpn_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".VpnWidgetToggleReceiver"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
