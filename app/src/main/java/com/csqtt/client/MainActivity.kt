@@ -30,12 +30,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import kotlinx.coroutines.launch
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AdminPanelSettings
 import androidx.compose.material.icons.filled.Cloud
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.PowerSettingsNew
 import androidx.compose.material.icons.filled.Terminal
 import androidx.compose.material.icons.filled.VpnKey
+import androidx.compose.material.icons.outlined.AdminPanelSettings
 import androidx.compose.material.icons.outlined.Cloud
 import androidx.compose.material.icons.outlined.FilterList
 import androidx.compose.material.icons.outlined.Info
@@ -70,6 +72,7 @@ import com.csqtt.client.ui.ExceptionsTab
 import com.csqtt.client.ui.FloatingToolbar
 import com.csqtt.client.ui.LogsTab
 import com.csqtt.client.ui.SettingsTab
+import com.csqtt.client.ui.WebPanelTab
 import com.csqtt.client.CsqttConstants
 import com.csqtt.client.ui.DeployTab
 import com.csqtt.client.ui.InfoTab
@@ -139,7 +142,7 @@ class MainActivity : ComponentActivity() {
             if (renderUi) {
                 uiStateHolder.SaveableStateProvider("main_ui") {
             val settingsStore = remember { appSettingsStore }
-            val themeMode by settingsStore.themeMode.collectAsStateWithLifecycle(initialValue = CsqttConstants.Theme.MODE_SYSTEM)
+            val themeMode by settingsStore.themeMode.collectAsStateWithLifecycle(initialValue = CsqttConstants.Theme.MODE_DARK)
             val activeFingerprint by settingsStore.selectedFingerprint.collectAsStateWithLifecycle(initialValue = CsqttConstants.Tunnel.DEFAULT_FINGERPRINT)
             val scope = rememberCoroutineScope()
 
@@ -272,6 +275,7 @@ private val navItems = listOf(
     NavItem(2, R.string.nav_deploy, Icons.Filled.Cloud, Icons.Outlined.Cloud),
     NavItem(3, R.string.nav_logs, Icons.Filled.Terminal, Icons.Outlined.Terminal),
     NavItem(4, R.string.nav_exceptions, Icons.Filled.FilterList, Icons.Outlined.FilterList),
+    NavItem(5, R.string.app_name, Icons.Filled.AdminPanelSettings, Icons.Outlined.AdminPanelSettings),
 )
 
 internal fun navigationSwipeProgress(totalDrag: Float, containerWidth: Int): Float =
@@ -280,7 +284,7 @@ internal fun navigationSwipeProgress(totalDrag: Float, containerWidth: Int): Flo
 internal fun shouldCommitNavigationSwipe(progress: Float): Boolean = progress > 0.4f
 
 internal fun resolveActiveNavIds(csqttLinkMode: Boolean, participantShowLogs: Boolean): List<Int> {
-    val allIds = listOf(0, 1, 2, 3, 4)
+    val allIds = listOf(0, 1, 2, 3, 4, 5)
     return allIds.filter { id ->
         if (csqttLinkMode) {
             if (id == 2) return@filter false
@@ -294,7 +298,7 @@ internal fun resolveActiveNavIds(csqttLinkMode: Boolean, participantShowLogs: Bo
 @Composable
 fun MainScreen(
     settingsStore: SettingsStore,
-    themeMode: String = CsqttConstants.Theme.MODE_SYSTEM,
+    themeMode: String = CsqttConstants.Theme.MODE_DARK,
     onThemeChange: (String) -> Unit = {},
     activeFingerprint: String = CsqttConstants.Tunnel.DEFAULT_FINGERPRINT,
     onFingerprintChange: (String) -> Unit = {},
@@ -556,6 +560,7 @@ fun MainScreen(
                                     isWhitelist = isWhitelist,
                                     serverRoutingActive = serverRoutingActive,
                                 )
+                                5 -> WebPanelTab()
                                 else -> Spacer(modifier = Modifier.fillMaxSize())
                                 }
                             }
