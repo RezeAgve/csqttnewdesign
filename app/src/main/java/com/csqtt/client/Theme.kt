@@ -1,7 +1,7 @@
 package com.csqtt.client
 
-import android.os.Build
 import android.app.Activity
+import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
@@ -22,106 +22,109 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
-import com.csqtt.client.CsqttConstants
 import com.csqtt.client.ui.design.CsqttDarkExtendedColors
 import com.csqtt.client.ui.design.CsqttLightExtendedColors
 import com.csqtt.client.ui.design.CsqttMaterialShapes
 import com.csqtt.client.ui.design.LocalCsqttExtendedColors
 
 val CSQTTTypography = Typography(
-    displayLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Bold, fontSize = 57.sp),
-    displayMedium = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Bold, fontSize = 45.sp),
-    displaySmall = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Bold, fontSize = 36.sp),
-    headlineLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 32.sp),
-    headlineMedium = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 28.sp),
-    headlineSmall = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 24.sp),
-    titleLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 22.sp),
-    titleMedium = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Medium, fontSize = 16.sp),
+    displayLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Bold, fontSize = 57.sp, letterSpacing = (-0.5).sp),
+    displayMedium = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Bold, fontSize = 45.sp, letterSpacing = (-0.4).sp),
+    displaySmall = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Bold, fontSize = 36.sp, letterSpacing = (-0.3).sp),
+    headlineLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 32.sp, letterSpacing = (-0.3).sp),
+    headlineMedium = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 28.sp, letterSpacing = (-0.2).sp),
+    headlineSmall = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 24.sp, letterSpacing = (-0.2).sp),
+    titleLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 20.sp, letterSpacing = (-0.15).sp),
+    titleMedium = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 16.sp, letterSpacing = (-0.1).sp),
     titleSmall = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Medium, fontSize = 14.sp),
     bodyLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Normal, fontSize = 16.sp),
     bodyMedium = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Normal, fontSize = 14.sp),
     bodySmall = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Normal, fontSize = 12.sp),
-    labelLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Medium, fontSize = 14.sp),
+    labelLarge = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.SemiBold, fontSize = 14.sp),
     labelMedium = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Medium, fontSize = 12.sp),
     labelSmall = TextStyle(fontFamily = FontFamily.Default, fontWeight = FontWeight.Medium, fontSize = 11.sp),
 )
 
-private val AmneziaDarkColorScheme = darkColorScheme(
-    primary = Color(0xFFF97316),
+// Apple iOS Dark Mode Palette
+private val AppleDarkColorScheme = darkColorScheme(
+    primary = Color(0xFF0A84FF),              // iOS System Blue
     onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFF3A1F0D),
-    onPrimaryContainer = Color(0xFFFFDBCA),
-    secondary = Color(0xFFFB923C),
-    onSecondary = Color(0xFF1A110A),
-    secondaryContainer = Color(0xFF2B1C12),
-    onSecondaryContainer = Color(0xFFFFDBCA),
-    tertiary = Color(0xFF38BDF8),
-    onTertiary = Color(0xFF082032),
-    tertiaryContainer = Color(0xFF102A3E),
-    onTertiaryContainer = Color(0xFFBAE6FD),
-    background = Color(0xFF0E0F12),
-    onBackground = Color(0xFFF3F4F6),
-    surface = Color(0xFF181A20),
-    onSurface = Color(0xFFF3F4F6),
-    surfaceVariant = Color(0xFF22252E),
-    onSurfaceVariant = Color(0xFF9CA3AF),
-    outline = Color(0xFF323642),
-    outlineVariant = Color(0xFF262932),
-    error = Color(0xFFEF4444),
+    primaryContainer = Color(0xFF003A75),
+    onPrimaryContainer = Color(0xFFD6E9FF),
+    secondary = Color(0xFF5E5CE6),            // iOS System Indigo
+    onSecondary = Color(0xFFFFFFFF),
+    secondaryContainer = Color(0xFF252459),
+    onSecondaryContainer = Color(0xFFE0DFFF),
+    tertiary = Color(0xFF30D158),             // iOS System Green
+    onTertiary = Color(0xFF003912),
+    tertiaryContainer = Color(0xFF0A3D1B),
+    onTertiaryContainer = Color(0xFFBDF7CA),
+    background = Color(0xFF000000),           // Pure OLED Black
+    onBackground = Color(0xFFFFFFFF),
+    surface = Color(0xFF1C1C1E),              // iOS Secondary System Grouped Background
+    onSurface = Color(0xFFFFFFFF),
+    surfaceVariant = Color(0xFF2C2C2E),       // iOS Tertiary System Fill
+    onSurfaceVariant = Color(0xFF8E8E93),     // iOS Secondary Label
+    outline = Color(0xFF38383A),              // iOS Separator
+    outlineVariant = Color(0xFF2C2C2E),
+    error = Color(0xFFFF453A),                // iOS System Red
     onError = Color(0xFFFFFFFF),
-    errorContainer = Color(0xFF450A0A),
-    onErrorContainer = Color(0xFFFECACA),
-    inverseSurface = Color(0xFFF3F4F6),
-    inverseOnSurface = Color(0xFF181A20),
-    inversePrimary = Color(0xFFEA580C),
+    errorContainer = Color(0xFF4A1210),
+    onErrorContainer = Color(0xFFFFDAD6),
+    inverseSurface = Color(0xFFF2F2F7),
+    inverseOnSurface = Color(0xFF1C1C1E),
+    inversePrimary = Color(0xFF007AFF),
     surfaceTint = Color.Transparent,
 )
 
-private val AmneziaLightColorScheme = lightColorScheme(
-    primary = Color(0xFFEA580C),
+// Apple iOS Light Mode Palette
+private val AppleLightColorScheme = lightColorScheme(
+    primary = Color(0xFF007AFF),              // iOS System Blue Light
     onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFFFFEDD5),
-    onPrimaryContainer = Color(0xFF431407),
-    secondary = Color(0xFFF97316),
+    primaryContainer = Color(0xFFD6E9FF),
+    onPrimaryContainer = Color(0xFF002B59),
+    secondary = Color(0xFF5856D6),
     onSecondary = Color(0xFFFFFFFF),
-    secondaryContainer = Color(0xFFFFEDD5),
-    onSecondaryContainer = Color(0xFF431407),
-    tertiary = Color(0xFF0284C7),
+    secondaryContainer = Color(0xFFE0DFFF),
+    onSecondaryContainer = Color(0xFF1E1C59),
+    tertiary = Color(0xFF34C759),             // iOS System Green Light
     onTertiary = Color(0xFFFFFFFF),
-    tertiaryContainer = Color(0xFFE0F2FE),
-    onTertiaryContainer = Color(0xFF0C4A6E),
-    background = Color(0xFFF8FAFC),
-    onBackground = Color(0xFF0F172A),
-    surface = Color(0xFFFFFFFF),
-    onSurface = Color(0xFF0F172A),
-    surfaceVariant = Color(0xFFF1F5F9),
-    onSurfaceVariant = Color(0xFF475569),
-    outline = Color(0xFFCBD5E1),
-    outlineVariant = Color(0xFFE2E8F0),
+    tertiaryContainer = Color(0xFFD1F7DC),
+    onTertiaryContainer = Color(0xFF063B14),
+    background = Color(0xFFF2F2F7),           // iOS System Grouped Background
+    onBackground = Color(0xFF000000),
+    surface = Color(0xFFFFFFFF),              // Pure White Cards
+    onSurface = Color(0xFF000000),
+    surfaceVariant = Color(0xFFE5E5EA),
+    onSurfaceVariant = Color(0xFF6C6C70),
+    outline = Color(0xFFC6C6C8),
+    outlineVariant = Color(0xFFE5E5EA),
+    error = Color(0xFFFF3B30),
+    onError = Color(0xFFFFFFFF),
     surfaceTint = Color.Transparent,
 )
 
 private fun getAppColorScheme(isDark: Boolean): androidx.compose.material3.ColorScheme =
-    if (isDark) AmneziaDarkColorScheme else AmneziaLightColorScheme
+    if (isDark) AppleDarkColorScheme else AppleLightColorScheme
 
 object CSQTTColors {
-    val connected = Color(0xFF22C55E)
-    val brand = Color(0xFFF97316)
-    val brandDeep = Color(0xFFEA580C)
+    val connected = Color(0xFF30D158)         // iOS Green
+    val brand = Color(0xFF0A84FF)             // iOS Blue
+    val brandDeep = Color(0xFF007AFF)
 
-    val warning = Color(0xFFF59E0B)
+    val warning = Color(0xFFFF9F0A)           // iOS Orange
 
-    val terminalBg = Color(0xFF12141A)
-    val terminalBgDark = Color(0xFF0A0B0E)
-    val terminalText = Color(0xFFE5E7EB)
-    val terminalGreen = Color(0xFF22C55E)
-    val terminalBlue = Color(0xFF38BDF8)
-    val terminalCyan = Color(0xFF2DD4BF)
-    val terminalRed = Color(0xFFEF4444)
-    val terminalCounter = Color(0xFF1E222B)
+    val terminalBg = Color(0xFF1C1C1E)
+    val terminalBgDark = Color(0xFF000000)
+    val terminalText = Color(0xFFF2F2F7)
+    val terminalGreen = Color(0xFF30D158)
+    val terminalBlue = Color(0xFF0A84FF)
+    val terminalCyan = Color(0xFF64D2FF)
+    val terminalRed = Color(0xFFFF453A)
+    val terminalCounter = Color(0xFF2C2C2E)
 
-    val donate = Color(0xFFF97316)
-    val telegram = Color(0xFF38BDF8)
+    val donate = Color(0xFF0A84FF)
+    val telegram = Color(0xFF0A84FF)
 }
 
 @Composable
