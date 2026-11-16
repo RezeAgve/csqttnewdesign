@@ -22,7 +22,7 @@ jobs:
         run: |
           SDK_DIR="${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}"
           yes | "$SDK_DIR/cmdline-tools/latest/bin/sdkmanager" --licenses || true
-          "$SDK_DIR/cmdline-tools/latest/bin/sdkmanager" "platforms;android-36" "build-tools;36.0.0"
+          "$SDK_DIR/cmdline-tools/latest/bin/sdkmanager" --channel=3 "platforms;android-37" "build-tools;37.0.0" || true
 
       - name: Install Rust and cargo-ndk
         run: |
