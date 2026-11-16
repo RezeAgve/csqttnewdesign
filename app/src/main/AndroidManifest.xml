@@ -40,7 +40,8 @@
         android:label="CSQTT"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CSQTTClient">
+        android:theme="@style/Theme.CSQTTClient"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".MainActivity"
@@ -116,28 +117,4 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
-
-        <receiver
-            android:name=".CaptchaCancelReceiver"
-            android:exported="false" />
-
-        <receiver
-            android:name=".VpnWidgetProvider"
-            android:label="CSQTT ВПН Виджет"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/vpn_widget_info" />
-        </receiver>
-
-        <receiver
-            android:name=".VpnWidgetToggleReceiver"
-            android:exported="false" />
-            
-    </application>
-
-</manifest>
+            android:exported="false
